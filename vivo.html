@@ -1,182 +1,255 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MisterVPN - Configurações e Alternativas</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: url('https://i.imgur.com/uBpmjDx.jpeg');
-            color: #fff;
-        }
-        .title-sessions {
-            color: #ffffff;
-            margin-top: 20px;
-            text-align: center;
-            font-size: 26px;
-            font-weight: bold;
-        }
-        section {
-            width: 90%;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: rgb(134 135 135 / 69%);
-            border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-            color: #000229;
-            border: 2px solid #bbbbbb;
-        }
-        p, ul {
-            font-size: 18px;
-            line-height: 1.8;
-        }
-        .highlight {
-            background-color: rgba(255, 0, 0, 0.1);        
-            padding: 5px;
-            margin: 5px 0;
-            border-radius: 5px;
-            font-size: 18px;
-        }
-        .code-box {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: rgba(255, 0, 0, 0.1);
-            border-left: 5px solid #FF0000;
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-        button {
-            background-color: #FF0000;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            margin-top: 5px;
-            border-radius: 5px;
-            font-size: 14px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #d80000;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MisterVPN - Configurações e Alternativas</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      color: #ffffff;
+      background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .navbar {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+      display: flex;
+      justify-content: center;
+      z-index: 999;
+    }
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      padding: 15px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    .navbar a:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    header {
+      text-align: center;
+      padding: 40px 0;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      backdrop-filter: blur(5px);
+      margin-bottom: 30px;
+    }
+    header h1 {
+      font-size: 2em;
+      margin: 0;
+    }
+    .subtitle {
+      font-size: 1em;
+      color: #ddd;
+      font-style: italic;
+      margin: 5px 0 0 0;
+    }
+    section {
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+    }
+    section h2 {
+      border-bottom: 2px solid #FF5A5F;
+      display: inline-block;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    p, ul {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-top: 10px;
+    }
+    .highlight {
+      background-color: rgba(255, 90, 95, 0.2);
+      border-radius: 4px;
+      padding: 2px 5px;
+      font-weight: 600;
+    }
+    .code-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(0,0,0,0.3);
+      padding: 10px;
+      border-left: 4px solid #FF5A5F;
+      border-radius: 6px;
+      margin-top: 8px;
+    }
+    .code-box span {
+      word-break: break-all;
+    }
+    button {
+      background: #FF5A5F;
+      border: none;
+      padding: 6px 12px;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    button:hover {
+      background: #e0484d;
+      transform: translateY(-2px);
+    }
+    footer {
+      text-align: center;
+      padding: 15px 0;
+      opacity: 0.8;
+    }
+    .fade-section {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .fade-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (max-width: 600px) {
+      .code-box {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      button {
+        margin-top: 5px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1 class="title-sessions">Configurações e Alternativas</h1>
-
-    <section>
-        <p>Para saber porque não conecta nas opções<span class="highlight">GCLOUD</span> e só clicar no ícone da folhinha e ver os logs, se a mensagem for <b>HTTP/1.1 503 Service Unavailable</b> significa que está configuração está offline, se o erro for 404, e uma verificação da Google, pode levar horas ara voltar, e se for erros diferentes como <b>Failed tô connect</b> isso já e problema na sua rede móvel, então abaixo você tem opção 1 e 2 para resolver o problema.</p>
-    </section>
-
-    <!--<section>
-        <p>Se você se conecta e não gera dados, aqui vai a solução que resolveu para muitos usuarios.</p>
-    </section>-->
-
-    <section>
-        <h2>Opção 1: Usar o App Vivo Pontos</h2>
-        <p>
-            Instale o app <span class="highlight">Vivo Pontos</span> na play store<br>
-            Siga os passos:
-        </p>
+  <div class="navbar">
+    <a href="#opcao1">Opção 1</a>
+    <a href="#opcao2">Opção 2</a>
+    <a href="#opcao3">Opção 3</a>
+  </div>
+  <div class="container">
+    <header>
+      <h1>MisterVPN</h1>
+      <p class="subtitle">Configurações e Alternativas de Conexão</p>
+    </header>
+    <main>
+      <section class="fade-section" id="introducao">
+        <p>Para saber porque não conecta nas opções <span class="highlight">GCLOUD</span> e só clicar no ícone da folhinha e ver os logs, se a mensagem for <b>HTTP/1.1 503 Service Unavailable</b> significa que está configuração está offline, se o erro for 404, e uma verificação da Google, pode levar horas ara voltar, e se for erros diferentes como <b>Failed to connect</b> isso já é problema na sua rede móvel, então abaixo você tem opção 1 e 2 para resolver o problema.</p>
+      </section>
+      <section class="fade-section" id="opcao1">
+        <h2><i class="fas fa-mobile-alt"></i> Opção 1: Usar o App Vivo Pontos</h2>
+        <p>Instale o app <span class="highlight">Vivo Pontos</span> na play store<br>Siga os passos:</p>
         <ul>
-            <li>Acesse o menu (ícone com 3 linhas no canto superior esquerdo).</li>
-            <li>Vá até a opção <span class="highlight">Usar Código</span> e cole o código abaixo.</li>
+          <li>Acesse o menu (ícone com 3 linhas no canto superior esquerdo).</li>
+          <li>Vá até a opção <span class="highlight">Usar Código</span> e cole o código abaixo.</li>
         </ul>
         <div class="code-box">
-            <span>67F25DFEC4</span>
-            <button onclick="copiarTexto('67F25DFEC4')">Copiar Código</button>
+          <span>67F25DFEC4</span>
+          <button onclick="copiarTexto('67F25DFEC4', this)">Copiar Código</button>
         </div>
         <ul>
-            <li>Apos receber os mil ponotos volte a tela inicial do app Vivo Pontos e clique em <strong>Resgatar</strong> e resgate 50 MB (500 pontos).</li>
-            <li>Ative e desative o modo avião para verificar o recebimento dos MB.</li>
-            <li>Consuma o pacote e teste as configurações <span class="highlight">VIVO GCLOUD & WEBSOCKET</span>.</li>
+          <li>Após receber os mil pontos volte à tela inicial do app Vivo Pontos e clique em <strong>Resgatar</strong> e resgate 50 MB (500 pontos).</li>
+          <li>Ative e desative o modo avião para verificar o recebimento dos MB.</li>
+          <li>Consuma o pacote e teste as configurações <span class="highlight">VIVO GCLOUD &amp; WEBSOCKET</span>.</li>
         </ul>
         <p>Repita o processo diariamente acumulando pontos assistindo aos 5 vídeos disponíveis no app.</p>
-    </section>
-
-    <section>
-        <h2>Opção 2: Configurar APN</h2>
+      </section>
+      <section class="fade-section" id="opcao2">
+        <h2><i class="fas fa-cog"></i> Opção 2: Configurar APN</h2>
         <p>Editar ou criar uma nova APN pode corrigir problemas de conexão. Siga os passos:</p>
         <ul>
-            <li>Abra as configurações do dispositivo e vá para <strong>Redes Móveis</strong>.</li>
-            <li>Adicione uma nova APN com as configurações abaixo:</li>
+          <li>Abra as configurações do dispositivo e vá para <strong>Redes Móveis</strong>.</li>
+          <li>Adicione uma nova APN com as configurações abaixo:</li>
         </ul>
         <div class="code-box">
-            <span>Nome: MVTUNNEL</span>
-            <button onclick="copiarTexto('MVTUNNEL')">Copiar Nome</button>
+          <span>Nome: MVTUNNEL</span>
+          <button onclick="copiarTexto('MVTUNNEL', this)">Copiar Nome</button>
         </div>
         <div class="code-box">
-            <span>APN: smart.m2m.vivo.com.br</span>
-            <button onclick="copiarTexto('smart.m2m.vivo.com.br')">Copiar APN</button>
+          <span>APN: smart.m2m.vivo.com.br</span>
+          <button onclick="copiarTexto('smart.m2m.vivo.com.br', this)">Copiar APN</button>
         </div>
         <div class="code-box">
-            <span>Proxy: Não definido</span>
-            <button onclick="copiarTexto('Não definido')">Copiar Proxy</button>
+          <span>Proxy: Não definido</span>
+          <button onclick="copiarTexto('Não definido', this)">Copiar Proxy</button>
         </div>
         <div class="code-box">
-            <span>Porta: Não definido</span>
-            <button onclick="copiarTexto('Não definido')">Copiar Porta</button>
+          <span>Porta: Não definido</span>
+          <button onclick="copiarTexto('Não definido', this)">Copiar Porta</button>
         </div>
         <div class="code-box">
-            <span>Usuário: vivo</span>
-            <button onclick="copiarTexto('vivo')">Copiar Usuário</button>
+          <span>Usuário: vivo</span>
+          <button onclick="copiarTexto('vivo', this)">Copiar Usuário</button>
         </div>
         <div class="code-box">
-            <span>Senha: vivo</span>
-            <button onclick="copiarTexto('vivo')">Copiar Senha</button>
+          <span>Senha: vivo</span>
+          <button onclick="copiarTexto('vivo', this)">Copiar Senha</button>
         </div>
         <div class="code-box">
-            <span>Tipo de autenticação: CHAP</span>
-            <button onclick="copiarTexto('CHAP')">Copiar Autenticação</button>
+          <span>Tipo de autenticação: CHAP</span>
+          <button onclick="copiarTexto('CHAP', this)">Copiar Autenticação</button>
         </div>
         <div class="code-box">
-            <span>Protocolo APN: IPv4</span>
-            <button onclick="copiarTexto('IPv4')">Copiar Protocolo</button>
+          <span>Protocolo APN: IPv4</span>
+          <button onclick="copiarTexto('IPv4', this)">Copiar Protocolo</button>
         </div>
         <div class="code-box">
-            <span>Protocolo de roaming de APN: IPv4</span>
-            <button onclick="copiarTexto('IPv4')">Copiar Roaming</button>
+          <span>Protocolo de roaming de APN: IPv4</span>
+          <button onclick="copiarTexto('IPv4', this)">Copiar Roaming</button>
         </div>
-    </section>
-
-    <section>
-        <h2>Opção 3: Contratar Pacotes de Internet</h2>
-        <p>
-            Para garantir estabilidade, contrate um pacote Vivo:
-        </p>
+      </section>
+      <section class="fade-section" id="opcao3">
+        <h2><i class="fas fa-shopping-cart"></i> Opção 3: Contratar Pacotes de Internet</h2>
+        <p>Para garantir estabilidade, contrate um pacote Vivo:</p>
         <ul>
-            <li>Vivo Turbo 30 Dias - R$20/mês (recomendado)</li>
-            <li>Vivo Easy Prime</li>
-            <li>Vivo Controle</li>
+          <li>Vivo Turbo 30 Dias - R$20/mês</li>
+          <li>Vivo Easy Prime</li>
+          <li>Vivo Controle</li>
         </ul>
         <p>Após ativar, utilize o aplicativo com as opções <span class="highlight">VIVO FLARE</span>.</p>
         <p>Outras opções:</p>
         <ul>
-            <li><strong>Claro:</strong> Funciona com Claro Flex, Claro Mix ou Claro Controle.</li>
-            <li><strong>Tim:</strong> Use um chip sem cadastro ou teste com saldo válido/expirado.</li>
+          <li><strong>Claro:</strong> Funciona com Claro Flex, Claro Mix ou Claro Controle.</li>
+          <li><strong>Tim:</strong> Use um chip sem cadastro ou teste com saldo válido/expirado.</li>
         </ul>
-    </section>
-
-    <section>
-        <p>
-            Se tentou tudo e não obteve sucesso, o problema não é interno. Novidades serão notificadas via aplicativo ou pelo fornecedor VPN.<br>
-            <strong>Equipe MisterVPN</strong> agradece sua atenção e compreensão.
-        </p>
-    </section>
-
-    <footer style="text-align: center; padding: 20px;">
-        © Copyright MISTERVPN 2019-2025
+      </section>
+      <section class="fade-section">
+        <p>Se tentou tudo e não obteve sucesso, o problema não é interno. Novidades serão notificadas via aplicativo ou pelo fornecedor VPN. <strong>Equipe MisterVPN</strong> agradece sua atenção e compreensão.</p>
+      </section>
+    </main>
+    <footer>
+      © MisterVPN 2019-2025
     </footer>
-
-    <script>
-        function copiarTexto(texto) {
-            navigator.clipboard.writeText(texto).then(() => {
-                alert("Texto copiado: " + texto);
-            });
+  </div>
+  <script>
+    function copiarTexto(texto, botao) {
+      navigator.clipboard.writeText(texto).then(() => {
+        botao.textContent = "✔️ Copiado!";
+        setTimeout(() => botao.textContent = "Copiar Código", 2000);
+      });
+    }
+    const sections = document.querySelectorAll('.fade-section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
         }
-    </script>
+      });
+    }, { threshold: 0.1 });
+    sections.forEach(section => observer.observe(section));
+  </script>
 </body>
 </html>
