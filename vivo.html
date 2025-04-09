@@ -83,32 +83,6 @@
       padding: 2px 5px;
       font-weight: 600;
     }
-    .code-box {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: rgba(0,0,0,0.3);
-      padding: 10px;
-      border-left: 4px solid #FF5A5F;
-      border-radius: 6px;
-      margin-top: 8px;
-    }
-    .code-box span {
-      word-break: break-all;
-    }
-    button {
-      background: #FF5A5F;
-      border: none;
-      padding: 6px 12px;
-      color: white;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    button:hover {
-      background: #e0484d;
-      transform: translateY(-2px);
-    }
     footer {
       text-align: center;
       padding: 15px 0;
@@ -123,12 +97,44 @@
       opacity: 1;
       transform: translateY(0);
     }
+    .apn-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .apn-list li {
+      background-color: rgba(0,0,0,0.3);
+      border-left: 4px solid #FF5A5F;
+      border-radius: 6px;
+      margin: 8px 0;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .apn-list li span {
+      word-break: break-all;
+      margin-right: 10px;
+    }
+    .apn-list li button {
+      background: #FF5A5F;
+      border: none;
+      padding: 6px 12px;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .apn-list li button:hover {
+      background: #e0484d;
+      transform: translateY(-2px);
+    }
     @media (max-width: 600px) {
-      .code-box {
+      .apn-list li {
         flex-direction: column;
         align-items: flex-start;
       }
-      button {
+      .apn-list li button {
         margin-top: 5px;
       }
     }
@@ -146,26 +152,28 @@
       <p class="subtitle">Configurações e Alternativas de Conexão</p>
     </header>
     <main>
-      <section class="fade-section" id="introducao">
-        <p>Para saber porque não conecta nas opções <span class="highlight">GCLOUD</span> e só clicar no ícone da folhinha e ver os logs, se a mensagem for <b>HTTP/1.1 503 Service Unavailable</b> significa que está configuração está offline, se o erro for 404, e uma verificação da Google, pode levar horas ara voltar, e se for erros diferentes como <b>Failed to connect</b> isso já é problema na sua rede móvel, então abaixo você tem opção 1 e 2 para resolver o problema.</p>
+      <section class="fade-section">
+        <p>Para saber porque não conecta nas opções <span class="highlight">GCLOUD</span> e só clicar no ícone da folhinha e ver os logs, se a mensagem for <b>HTTP/1.1 503 Service Unavailable</b> significa que está configuração está offline, se o erro for 404, é uma verificação da Google, pode levar horas para voltar, e se for erros diferentes como <b>Failed to connect</b> isso já é problema na sua rede móvel. Abaixo você tem opção 1, 2 e 3 para resolver o problema.</p>
       </section>
       <section class="fade-section" id="opcao1">
         <h2><i class="fas fa-mobile-alt"></i> Opção 1: Usar o App Vivo Pontos</h2>
-        <p>Instale o app <span class="highlight">Vivo Pontos</span> na play store<br>Siga os passos:</p>
+        <p>Instale o app <span class="highlight">Vivo Pontos</span> na Play Store.</p>
         <ul>
           <li>Acesse o menu (ícone com 3 linhas no canto superior esquerdo).</li>
           <li>Vá até a opção <span class="highlight">Usar Código</span> e cole o código abaixo.</li>
         </ul>
-        <div class="code-box">
-          <span>67F25DFEC4</span>
-          <button onclick="copiarTexto('67F25DFEC4', this)">Copiar Código</button>
-        </div>
+        <ul class="apn-list">
+          <li>
+            <span>67F25DFEC4</span>
+            <button onclick="copiarTexto('67F25DFEC4', this)">Copiar Código</button>
+          </li>
+        </ul>
         <ul>
-          <li>Após receber os mil pontos volte à tela inicial do app Vivo Pontos e clique em <strong>Resgatar</strong> e resgate 50 MB (500 pontos).</li>
+          <li>Após receber os mil pontos volte à tela inicial do app Vivo Pontos e clique em <strong>Resgatar</strong> para obter 50 MB (500 pontos).</li>
           <li>Ative e desative o modo avião para verificar o recebimento dos MB.</li>
           <li>Consuma o pacote e teste as configurações <span class="highlight">VIVO GCLOUD &amp; WEBSOCKET</span>.</li>
         </ul>
-        <p>Repita o processo diariamente acumulando pontos assistindo aos 5 vídeos disponíveis no app.</p>
+        <p>Repita o processo diariamente para acumular pontos assistindo aos vídeos disponíveis no app.</p>
       </section>
       <section class="fade-section" id="opcao2">
         <h2><i class="fas fa-cog"></i> Opção 2: Configurar APN</h2>
@@ -174,42 +182,39 @@
           <li>Abra as configurações do dispositivo e vá para <strong>Redes Móveis</strong>.</li>
           <li>Adicione uma nova APN com as configurações abaixo:</li>
         </ul>
-        <div class="code-box">
-          <span>Nome: MVTUNNEL</span>
-          <button onclick="copiarTexto('MVTUNNEL', this)">Copiar Nome</button>
-        </div>
-        <div class="code-box">
-          <span>APN: smart.m2m.vivo.com.br</span>
-          <button onclick="copiarTexto('smart.m2m.vivo.com.br', this)">Copiar APN</button>
-        </div>
-        <div class="code-box">
-          <span>Proxy: Não definido</span>
-          <button onclick="copiarTexto('Não definido', this)">Copiar Proxy</button>
-        </div>
-        <div class="code-box">
-          <span>Porta: Não definido</span>
-          <button onclick="copiarTexto('Não definido', this)">Copiar Porta</button>
-        </div>
-        <div class="code-box">
-          <span>Usuário: vivo</span>
-          <button onclick="copiarTexto('vivo', this)">Copiar Usuário</button>
-        </div>
-        <div class="code-box">
-          <span>Senha: vivo</span>
-          <button onclick="copiarTexto('vivo', this)">Copiar Senha</button>
-        </div>
-        <div class="code-box">
-          <span>Tipo de autenticação: CHAP</span>
-          <button onclick="copiarTexto('CHAP', this)">Copiar Autenticação</button>
-        </div>
-        <div class="code-box">
-          <span>Protocolo APN: IPv4</span>
-          <button onclick="copiarTexto('IPv4', this)">Copiar Protocolo</button>
-        </div>
-        <div class="code-box">
-          <span>Protocolo de roaming de APN: IPv4</span>
-          <button onclick="copiarTexto('IPv4', this)">Copiar Roaming</button>
-        </div>
+        <ul class="apn-list">
+          <li>
+            <span>Nome: MVTUNNEL</span>
+            <button onclick="copiarTexto('MVTUNNEL', this)">Copiar</button>
+          </li>
+          <li>
+            <span>APN: smart.m2m.vivo.com.br</span>
+            <button onclick="copiarTexto('smart.m2m.vivo.com.br', this)">Copiar</button>
+          </li>
+          <li>
+            <span>Proxy: Não definido</span>
+          </li>
+          <li>
+            <span>Porta: Não definido</span>
+          </li>
+          <li>
+            <span>Usuário: vivo</span>
+            <button onclick="copiarTexto('vivo', this)">Copiar</button>
+          </li>
+          <li>
+            <span>Senha: vivo</span>
+            <button onclick="copiarTexto('vivo', this)">Copiar</button>
+          </li>
+          <li>
+            <span>Tipo de autenticação: PAP ou CHAP</span>
+          </li>
+          <li>
+            <span>Protocolo APN: IPv4</span>
+          </li>
+          <li>
+            <span>Protocolo de roaming de APN: IPv4</span>
+          </li>
+        </ul>
       </section>
       <section class="fade-section" id="opcao3">
         <h2><i class="fas fa-shopping-cart"></i> Opção 3: Contratar Pacotes de Internet</h2>
@@ -238,7 +243,7 @@
     function copiarTexto(texto, botao) {
       navigator.clipboard.writeText(texto).then(() => {
         botao.textContent = "✔️ Copiado!";
-        setTimeout(() => botao.textContent = "Copiar Código", 2000);
+        setTimeout(() => botao.textContent = "Copiar", 2000);
       });
     }
     const sections = document.querySelectorAll('.fade-section');
